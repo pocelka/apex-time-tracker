@@ -16,7 +16,7 @@ create table tt_task_list (
    created           timestamp with time zone default current_timestamp not null,
    created_by        varchar2(255 char) default coalesce(sys_context('APEXSESSION', 'APP_USER'),
                                                          regexp_substr(sys_context('userenv','client_identifier'),'^[^:]*'),
-                                                         sys_context('userenv','session_user')) not null ,
+                                                         sys_context('userenv','session_user')) not null,
    name              varchar2(100 char) not null,
    project           varchar2(50 char),
    desc_text         varchar2(500 char),

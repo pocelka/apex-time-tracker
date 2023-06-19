@@ -17,10 +17,13 @@ create or replace package body tt_p7 as
 
    begin
 
-      -- logger.append_param(l_params, 'p_task_id', p_task_id);
-      -- logger.append_param(l_params, 'p_details', p_details);
+      --I want to log debug messages only when debug mode is enabled in apex development page.
+      if (tt_core.is_debug_on) then
+         logger.append_param(l_params, 'p_task_id', p_task_id);
+         logger.append_param(l_params, 'p_details', p_details);
 
-      -- logger.log('debug', l_scope, null, l_params);
+         logger.log('debug', l_scope, null, l_params);
+      end if;
 
       update tt_time_entry t
       set t.end_dt = current_timestamp
@@ -44,4 +47,3 @@ create or replace package body tt_p7 as
    --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 end tt_p7;
-/
