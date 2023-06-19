@@ -26,7 +26,7 @@
             "   c_version            constant varchar2(8 char) := '1.0.0';\n",
             "   procedure $3:procedure_name(",
             "      p_param1_todo    in varchar2) is\n",
-            "end $1:package_name"
+            "end $1:package_name;"
             "/"
 		],
 		"description": "Create Oracle package specification."
@@ -43,15 +43,15 @@
             "   procedure $2:procedure_name(",
             "      p_param1_todo    in varchar2) is\n",
             "      l_params            logger.tab_param;",
-            "      l_scope             logger_logs.scope%type := gc_scope_prefix || '$2:procedure_name';\n",
+            "      l_scope             logger_logs.scope%type := c_scope_prefix || '$2:procedure_name';\n",
             "   begin\n",
             "      logger.append_param(l_params, 'p_param1_todo', p_param1_todo);",
             "      logger.log('START', l_scope, null, l_params);\n",
             "      logger.log('END', l_scope, null, l_params);\n",
-            "   exception",
-            "      when others then",
-            "         logger.log_error('Unhandled Exception', l_scope, null, l_params);",
-            "         raise;\n",
+            "      exception",
+            "         when others then",
+            "            logger.log_error('Unhandled Exception', l_scope, null, l_params);",
+            "            raise;\n",
             "   end $2:procedure_name;",
             "   --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n",
             "end $1:package_name;"
