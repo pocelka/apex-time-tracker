@@ -19,7 +19,7 @@ create table tt_time_entry (
                                                          sys_context('userenv','session_user')) not null,
    task_id           number,
    start_dt          timestamp with time zone default current_timestamp,
-   end_dt            timestamp with time zone default current_timestamp,
+   end_dt            timestamp with time zone,
    additional_info   varchar2(4000 char)
 )
 ;
