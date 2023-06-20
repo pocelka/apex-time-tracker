@@ -24,4 +24,6 @@ Application build in APEX was much more mature compared to Excel, however I stil
 
 ## Version 4
 
-Version 3 was redesigned little bit to be more user friendly. In this version I also tried to minimize "custom" development as much as possible and to leverage cards out of the box functionalities.
+Version 3 was redesigned little bit to be more user friendly. In this version I tried to minimize "custom" development as much as possible and to leverage cards out of the box functionalities. I also added proper help pages through application.
+
+![Apex 3rd App](./images/v4.png)

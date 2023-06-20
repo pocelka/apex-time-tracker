@@ -25,6 +25,7 @@ To install components, execute the following script as application owner:
 cd database
 sqlcl [connection string]
 @install.sql
+exit
 ```
 
 If no errors are produced in ```install.log``` file, back end installation is considered as successfully installed;
@@ -38,6 +39,7 @@ Once APEX workspace exists execute the following script:
 ```bash
 cd database
 sqlcl [connection string] @install_apex.sql
+exit
 ```
 
 If no errors are produced in ```install_apex.log```. application is considered as successfully installed;
@@ -49,6 +51,7 @@ To un-install back end and front end components execute the following script as 
 ```bash
 cd database
 sqlcl [connection string] @uninstall.sql
+exit
 ```
 
 If no errors are produced in ```uninstall.log```, application is considered as successfully uninstalled;

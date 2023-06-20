@@ -3,6 +3,3 @@
 
 # installation log files
 *.log
-
-# secrets file
-scripts/secret.sh
