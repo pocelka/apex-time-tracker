@@ -9,5 +9,9 @@ create or replace package tt_core authid current_user is
    Function returns actual state of the apex debug mode.
    **/
 
+   function get_session_user return varchar2;
+   /**
+   Function returns session user. This is a helper function to have cleaner code.
+   **/
+
 end tt_core;
-/

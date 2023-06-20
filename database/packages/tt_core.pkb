@@ -14,5 +14,14 @@ create or replace package body tt_core as
    end is_debug_on;
    --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+   function get_session_user return varchar2 is
+   begin
+
+      return coalesce(sys_context('APEXSESSION', 'APP_USER'),
+                      regexp_substr(sys_context('userenv','client_identifier'),'^[^:]*'),
+                      sys_context('userenv','session_user'));
+
+   end get_session_user;
+   --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 end tt_core;
-/
