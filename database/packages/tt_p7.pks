@@ -1,8 +1,8 @@
 create or replace package tt_p7 authid current_user is
 
-   /*!
-   * Package contains routines for page 7.
-   */
+   /**
+   Package contains routines for page 7.
+   **/
 
    procedure create_time_entry(
       p_task_id             in tt_task_list.id%type,                    -- Task for which new entry will be created.
@@ -12,4 +12,3 @@ create or replace package tt_p7 authid current_user is
    **/
 
 end tt_p7;
-/

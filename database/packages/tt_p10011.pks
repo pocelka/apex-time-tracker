@@ -1,8 +1,8 @@
 create or replace package tt_p10011 authid current_user is
 
-   /*!
-   * Package contains routines for page 10011.
-   */
+   /**
+   Package contains routines for page 10011.
+   **/
 
    function get_page_help(
       p_application_id     in apex_application_pages.application_id%type,              -- Application ID for which we are getting help.

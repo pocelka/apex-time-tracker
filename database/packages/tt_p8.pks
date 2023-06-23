@@ -1,8 +1,8 @@
 create or replace package tt_p8 authid current_user is
 
-   /*!
-   * Package contains routines for page 8.
-   */
+   /**
+   Package contains routines for page 8.
+   **/
 
    function interval_to_seconds(
       p_interval  in interval day to second) return number;       -- Interval to be converted.
