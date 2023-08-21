@@ -28,7 +28,8 @@ create or replace package body tt_p7 as
       update tt_time_entry t
       set t.end_dt = current_timestamp
       where 1 = 1
-      and t.end_dt is null;
+      and t.end_dt is null
+      and t.created_by = tt_core.get_session_user;
 
       insert into tt_time_entry(
          task_id,
