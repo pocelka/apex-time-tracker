@@ -19,7 +19,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_imp.import_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.0'
+,p_release=>'23.1.2'
 ,p_default_workspace_id=>29631720813958193
 ,p_default_application_id=>100
 ,p_default_id_offset=>0
@@ -27,13 +27,13 @@ wwv_flow_imp.import_begin (
 );
 end;
 /
- 
+
 prompt APPLICATION 100 - Time Tracker
 --
 -- Application Export:
 --   Application:     100
 --   Name:            Time Tracker
---   Date and Time:   21:15 Tuesday June 20, 2023
+--   Date and Time:   18:11 Monday August 21, 2023
 --   Exported By:     DEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -72,7 +72,7 @@ prompt APPLICATION 100 - Time Tracker
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---   Version:         23.1.0
+--   Version:         23.1.2
 --   Instance ID:     9518025928362380
 --
 
@@ -119,7 +119,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Time Tracker'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230620204853'
+,p_last_upd_yyyymmddhh24miss=>'20230821181040'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_print_server_type=>'NATIVE'
@@ -18916,7 +18916,7 @@ wwv_flow_imp_page.create_page(
 'Results from this page can be used as an input for 3rd party tools; i.e. for company related tools.'))
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230620202250'
+,p_last_upd_yyyymmddhh24miss=>'20230821181040'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12212915179921734)
@@ -18940,7 +18940,7 @@ wwv_flow_imp_page.create_page_plug(
 '                           and tl.id = te.task_id',
 '                        where 1 = 1',
 '                        and te.created_by = tt_core.get_session_user',
-'                        and te.created >= current_timestamp - interval ''3'' day',
+'                        and te.created >= current_timestamp - interval ''14'' day',
 '                        and tl.reporting = ''Y''',
 '                        group by ',
 '                           trunc(te.start_dt))',
@@ -18948,7 +18948,10 @@ wwv_flow_imp_page.create_page_plug(
 '   work_date,',
 '   tt_p8.seconds_to_hours(p_seconds => tt_p8.interval_to_seconds(p_interval => duration))  as duration',
 'from cte_last_3_days',
-'where 1 = 1'))
+'where 1 = 1',
+'order by 1 desc',
+'fetch first 3 rows only',
+';'))
 ,p_plug_source_type=>'NATIVE_IR'
 ,p_prn_content_disposition=>'ATTACHMENT'
 ,p_prn_units=>'INCHES'
@@ -19066,7 +19069,7 @@ wwv_flow_imp_page.create_page_plug(
 '                           and tl.id = te.task_id',
 '                        where 1 = 1',
 '                        and te.created_by = tt_core.get_session_user',
-'                        and te.created >= current_timestamp - interval ''21'' day',
+'                        and te.created >= current_timestamp - interval ''1'' month',
 '                        and tl.reporting = ''Y''',
 '                        group by ',
 '                           to_char(te.start_dt, ''yyyy'') ',
@@ -19083,6 +19086,7 @@ wwv_flow_imp_page.create_page_plug(
 'from cte_last_3_weeks',
 'where 1 = 1',
 'order by 1 desc',
+'fetch first 3 rows only',
 ';'))
 ,p_plug_source_type=>'NATIVE_IR'
 ,p_prn_content_disposition=>'ATTACHMENT'
@@ -19250,7 +19254,9 @@ wwv_flow_imp_page.create_page_plug(
 '   on 1 = 1',
 '   and t.week = p.week',
 '   and t.task_name = p.task_name',
-'where 1 = 1'))
+'where 1 = 1',
+'order by 1 desc',
+';'))
 ,p_plug_source_type=>'NATIVE_IR'
 ,p_prn_content_disposition=>'ATTACHMENT'
 ,p_prn_units=>'INCHES'
