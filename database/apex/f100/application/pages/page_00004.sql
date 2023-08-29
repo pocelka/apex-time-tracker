@@ -22,7 +22,7 @@ wwv_flow_imp_page.create_page(
 ,p_help_text=>'On this page user can maintain existing tasks.'
 ,p_page_component_map=>'21'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230619205514'
+,p_last_upd_yyyymmddhh24miss=>'20230829210016'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(13273752688392522)
@@ -46,9 +46,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_query_table=>'TT_TASK_LIST'
 ,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '1 = 1',
-'and created_by = coalesce(sys_context(''APEXSESSION'', ''APP_USER''),',
-'                          regexp_substr(sys_context(''userenv'',''client_identifier''),''^[^:]*''),',
-'                          sys_context(''userenv'',''session_user''))'))
+'and created_by = tt_core.get_session_user'))
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
 ,p_prn_page_header=>'Tasks List'

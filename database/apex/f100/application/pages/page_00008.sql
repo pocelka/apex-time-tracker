@@ -25,7 +25,7 @@ wwv_flow_imp_page.create_page(
 'Results from this page can be used as an input for 3rd party tools; i.e. for company related tools.'))
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230821181040'
+,p_last_upd_yyyymmddhh24miss=>'20230829205355'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12212915179921734)
@@ -303,7 +303,10 @@ wwv_flow_imp_page.create_page_plug(
 '                        to_char(te.start_dt, ''FmDay'')                      as day_of_week,',
 '                        trunc(te.start_dt)                                 as date_from,',
 '                        trunc(coalesce(te.end_dt, current_timestamp))      as date_to,',
-'                        tl.name                                            as task_name,',
+'                        tl.name',
+'                        || '' (''',
+'                        || tl.project',
+'                        || '')''                                             as task_name,',
 '                        tt_p8.interval_to_seconds(p_interval => coalesce(te.end_dt, current_timestamp) - te.start_dt) as duration',
 '                     from tt_time_entry te',
 '                     join tt_task_list tl',
