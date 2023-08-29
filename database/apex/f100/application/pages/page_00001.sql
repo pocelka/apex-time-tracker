@@ -30,7 +30,7 @@ wwv_flow_imp_page.create_page(
 '</p>'))
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230619210907'
+,p_last_upd_yyyymmddhh24miss=>'20230829204243'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12211410596921719)
@@ -44,8 +44,8 @@ wwv_flow_imp_page.create_page_plug(
 '  -- data',
 '  id,                            -- primary key',
 '  null,                          -- secondary key if needed',
-'  project,                       -- title',
-'  name,                          -- subtitle',
+'  name,                          -- title',
+'  project,                       -- subtitle',
 '  desc_text,                     -- card body text',
 '  null as card_secondary_text,   -- card secondary text, positioned near bottom',
 '',
@@ -56,9 +56,7 @@ wwv_flow_imp_page.create_page_plug(
 'from tt_task_list',
 'where 1 = 1',
 'and active = ''Y''',
-'and created_by = coalesce(sys_context(''APEXSESSION'', ''APP_USER''),',
-'                          regexp_substr(sys_context(''userenv'',''client_identifier''),''^[^:]*''),',
-'                          sys_context(''userenv'',''session_user''))',
+'and created_by = tt_core.get_session_user',
 'order by',
 '    project,',
 '    name',

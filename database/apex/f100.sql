@@ -33,7 +33,7 @@ prompt APPLICATION 100 - Time Tracker
 -- Application Export:
 --   Application:     100
 --   Name:            Time Tracker
---   Date and Time:   18:11 Monday August 21, 2023
+--   Date and Time:   20:44 Tuesday August 29, 2023
 --   Exported By:     DEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -107,7 +107,7 @@ wwv_imp_workspace.create_flow(
 ,p_logo_text=>'Time Tracker'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'4.0.0'
+,p_flow_version=>'4.0.3'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -119,7 +119,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Time Tracker'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230821181040'
+,p_last_upd_yyyymmddhh24miss=>'20230829204243'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_print_server_type=>'NATIVE'
@@ -17691,7 +17691,7 @@ wwv_flow_imp_page.create_page(
 '</p>'))
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230619210907'
+,p_last_upd_yyyymmddhh24miss=>'20230829204243'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12211410596921719)
@@ -17705,8 +17705,8 @@ wwv_flow_imp_page.create_page_plug(
 '  -- data',
 '  id,                            -- primary key',
 '  null,                          -- secondary key if needed',
-'  project,                       -- title',
-'  name,                          -- subtitle',
+'  name,                          -- title',
+'  project,                       -- subtitle',
 '  desc_text,                     -- card body text',
 '  null as card_secondary_text,   -- card secondary text, positioned near bottom',
 '',
@@ -17717,9 +17717,7 @@ wwv_flow_imp_page.create_page_plug(
 'from tt_task_list',
 'where 1 = 1',
 'and active = ''Y''',
-'and created_by = coalesce(sys_context(''APEXSESSION'', ''APP_USER''),',
-'                          regexp_substr(sys_context(''userenv'',''client_identifier''),''^[^:]*''),',
-'                          sys_context(''userenv'',''session_user''))',
+'and created_by = tt_core.get_session_user',
 'order by',
 '    project,',
 '    name',
