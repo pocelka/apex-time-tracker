@@ -30,7 +30,7 @@ wwv_flow_imp_page.create_page(
 '</p>'))
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230829204243'
+,p_last_upd_yyyymmddhh24miss=>'20230829212542'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12211410596921719)
@@ -71,9 +71,9 @@ wwv_flow_imp_page.create_card(
 ,p_region_id=>wwv_flow_imp.id(12211410596921719)
 ,p_layout_type=>'GRID'
 ,p_title_adv_formatting=>false
-,p_title_column_name=>'PROJECT'
+,p_title_column_name=>'NAME'
 ,p_sub_title_adv_formatting=>false
-,p_sub_title_column_name=>'NAME'
+,p_sub_title_column_name=>'PROJECT'
 ,p_body_adv_formatting=>false
 ,p_body_column_name=>'DESC_TEXT'
 ,p_second_body_adv_formatting=>false

@@ -96,6 +96,7 @@ wwv_flow_imp_page.create_worksheet(
  p_id=>wwv_flow_imp.id(12213979191921744)
 ,p_max_row_count=>'1000000'
 ,p_show_search_bar=>'N'
+,p_report_list_mode=>'TABS'
 ,p_lazy_loading=>false
 ,p_show_detail_link=>'N'
 ,p_enable_mail_download=>'Y'
@@ -232,6 +233,7 @@ wwv_flow_imp_page.create_worksheet(
  p_id=>wwv_flow_imp.id(12214271951921747)
 ,p_max_row_count=>'1000000'
 ,p_show_search_bar=>'N'
+,p_report_list_mode=>'TABS'
 ,p_lazy_loading=>false
 ,p_show_detail_link=>'N'
 ,p_enable_mail_download=>'Y'
