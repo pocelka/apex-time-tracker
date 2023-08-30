@@ -12,6 +12,7 @@ Core package with for time tracker application.
 ## Function is_debug_on
 
 Function returns actual state of the apex debug mode.
+
 | Parameter | Type | Data Type | Description |
 | --- | --- | --- | --- |
 |  | out | pl/sql boolean | |
@@ -19,6 +20,7 @@ Function returns actual state of the apex debug mode.
 ## Function get_session_user
 
 Function returns session user. This is a helper function to have cleaner code.
+
 | Parameter | Type | Data Type | Description |
 | --- | --- | --- | --- |
 |  | out | varchar2 | |

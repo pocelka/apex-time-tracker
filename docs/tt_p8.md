@@ -12,6 +12,7 @@ Package contains routines for page 8.
 ## Function interval_to_seconds
 
 Converts interval into the seconds. This function is used for pivot sum as for intervals is not supported aggregation.
+
 | Parameter | Type | Data Type | Description |
 | --- | --- | --- | --- |
 |  | out | number | |
@@ -20,6 +21,7 @@ Converts interval into the seconds. This function is used for pivot sum as for i
 ## Function seconds_to_hours
 
 Converts seconds to format hh:mm:ss.
+
 | Parameter | Type | Data Type | Description |
 | --- | --- | --- | --- |
 |  | out | varchar2 | |

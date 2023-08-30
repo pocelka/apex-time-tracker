@@ -11,6 +11,7 @@ Package contains routines for page 7.
 ## Procedure create_time_entry
 
 Procedure is used to handle time entries. It ends previous entry and adds new row with new entry.
+
 | Parameter | Type | Data Type | Description |
 | --- | --- | --- | --- |
 | p_task_id | in | number | Task for which new entry will be created.|
