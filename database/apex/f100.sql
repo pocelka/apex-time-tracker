@@ -33,14 +33,14 @@ prompt APPLICATION 100 - Time Tracker
 -- Application Export:
 --   Application:     100
 --   Name:            Time Tracker
---   Date and Time:   20:02 Tuesday September 5, 2023
+--   Date and Time:   20:26 Tuesday September 5, 2023
 --   Exported By:     DEV
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     10
 --       Items:                   14
 --       Processes:               11
---       Regions:                 16
+--       Regions:                 15
 --       Buttons:                  5
 --       Dynamic Actions:          2
 --     Shared Components:
@@ -119,7 +119,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Time Tracker'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230905195235'
+,p_last_upd_yyyymmddhh24miss=>'20230905200648'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_print_server_type=>'NATIVE'
@@ -18509,7 +18509,7 @@ wwv_flow_imp_page.create_page(
 '</p>'))
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230829212542'
+,p_last_upd_yyyymmddhh24miss=>'20230905200648'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12211410596921719)
@@ -18570,20 +18570,6 @@ wwv_flow_imp_page.create_card_action(
 ,p_display_sequence=>10
 ,p_link_target_type=>'REDIRECT_PAGE'
 ,p_link_target=>'f?p=&APP_ID.:7:&SESSION.::&DEBUG.:RR,7:P7_TASK_ID:&ID.'
-);
-wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(13239152706140095)
-,p_plug_name=>'Time Tracker'
-,p_region_template_options=>'#DEFAULT#'
-,p_escape_on_http_output=>'Y'
-,p_plug_template=>wwv_flow_imp.id(13012759350139722)
-,p_plug_display_sequence=>10
-,p_plug_display_point=>'REGION_POSITION_01'
-,p_plug_query_num_rows=>15
-,p_region_image=>'#APP_FILES#icons/app-icon-512.png'
-,p_attribute_01=>'N'
-,p_attribute_02=>'HTML'
-,p_attribute_03=>'Y'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(12211147482921716)
