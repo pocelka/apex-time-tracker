@@ -25,12 +25,12 @@ wwv_flow_imp_page.create_page(
 'Results from this page can be used as an input for 3rd party tools; i.e. for company related tools.'))
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230905193205'
+,p_last_upd_yyyymmddhh24miss=>'20230905194227'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12212915179921734)
 ,p_plug_name=>'Last 3 Days'
-,p_region_name=>'last-3-days'
+,p_region_css_classes=>'last-3'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(13046053678139740)
 ,p_plug_display_sequence=>10
@@ -155,7 +155,7 @@ wwv_flow_imp_page.create_worksheet_rpt(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12213009122921735)
 ,p_plug_name=>'Last 3 Weeks'
-,p_region_name=>'last-3-weeks'
+,p_region_css_classes=>'last-3'
 ,p_region_template_options=>'#DEFAULT#:t-Region--scrollBody'
 ,p_plug_template=>wwv_flow_imp.id(13046053678139740)
 ,p_plug_display_sequence=>20
