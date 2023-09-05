@@ -33,7 +33,7 @@ prompt APPLICATION 100 - Time Tracker
 -- Application Export:
 --   Application:     100
 --   Name:            Time Tracker
---   Date and Time:   21:27 Tuesday August 29, 2023
+--   Date and Time:   19:33 Tuesday September 5, 2023
 --   Exported By:     DEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -119,7 +119,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Time Tracker'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230829212542'
+,p_last_upd_yyyymmddhh24miss=>'20230905193205'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_print_server_type=>'NATIVE'
@@ -18930,7 +18930,7 @@ wwv_flow_imp_page.create_page(
 'Results from this page can be used as an input for 3rd party tools; i.e. for company related tools.'))
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230829205355'
+,p_last_upd_yyyymmddhh24miss=>'20230905193205'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12212915179921734)
@@ -19221,7 +19221,7 @@ wwv_flow_imp_page.create_page_plug(
 '                        and tl.id = te.task_id',
 '                     where 1 = 1',
 '                     and te.created_by = tt_core.get_session_user',
-'                     and te.created >= current_timestamp - interval ''2'' month',
+'                     and te.created >= add_months(current_timestamp, -2)',
 '                     and tl.reporting = ''Y''),',
 '   cte_total_calculation as (select',
 '                                 week,',

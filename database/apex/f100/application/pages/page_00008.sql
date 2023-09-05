@@ -25,7 +25,7 @@ wwv_flow_imp_page.create_page(
 'Results from this page can be used as an input for 3rd party tools; i.e. for company related tools.'))
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230829205355'
+,p_last_upd_yyyymmddhh24miss=>'20230905193205'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12212915179921734)
@@ -316,7 +316,7 @@ wwv_flow_imp_page.create_page_plug(
 '                        and tl.id = te.task_id',
 '                     where 1 = 1',
 '                     and te.created_by = tt_core.get_session_user',
-'                     and te.created >= current_timestamp - interval ''2'' month',
+'                     and te.created >= add_months(current_timestamp, -2)',
 '                     and tl.reporting = ''Y''),',
 '   cte_total_calculation as (select',
 '                                 week,',
