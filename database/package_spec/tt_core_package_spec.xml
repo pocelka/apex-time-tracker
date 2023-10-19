@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="58a468f08325d482251e3dc6f10a6083ce31ce5f" author="(DEV)-Generated" failOnError="false" runOnChange="true" runAlways="false"  >
+		<n0:createOraclePackageSpec objectName="TT_CORE" objectType="PACKAGE_SPEC" ownerName="DEV"  replaceIfExists="true" >
+			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE "DEV"."TT_CORE" authid current_user is
+
+   /**
+   Core package with for time tracker application.
+   **/
+
+   function is_debug_on return boolean;
+   /**
+   Function returns actual state of the apex debug mode.
+   **/
+
+   function get_session_user return varchar2;
+   /**
+   Function returns session user. This is a helper function to have cleaner code.
+   **/
+
+end tt_core;
+/]]></n0:source>
+		</n0:createOraclePackageSpec>
+	</changeSet>
+</databaseChangeLog>

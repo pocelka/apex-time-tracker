@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="05f23476ae8196ecd4591a42f35d52e4462ea053" author="(DEV)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
+		<n0:createOraclePackageSpec objectName="TT_P8" objectType="PACKAGE_SPEC" ownerName="DEV"  replaceIfExists="true" >
+			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE "DEV"."TT_P8" authid current_user is
+
+   /**
+   Package contains routines for page 8.
+   **/
+
+   function interval_to_seconds(
+      p_interval  in interval day to second) return number;       -- Interval to be converted.
+   /**
+   Converts interval into the seconds. This function is used for pivot sum as for intervals is not supported aggregation.
+   **/
+
+   function seconds_to_hours(
+      p_seconds   in number) return varchar2;                     -- Seconds to be converted.
+   /**
+   Converts seconds to format hh:mm:ss.
+   **/
+
+end tt_p8;
+/]]></n0:source>
+		</n0:createOraclePackageSpec>
+	</changeSet>
+</databaseChangeLog>

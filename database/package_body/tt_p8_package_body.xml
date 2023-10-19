@@ -1,4 +1,13 @@
-create or replace package body tt_p8 as
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="681d87343dadbb3c1ea43daed358ea83dc41a7fa" author="(DEV)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
+		<n0:createOraclePackageBody objectName="TT_P8" objectType="PACKAGE_BODY" ownerName="DEV"  replaceIfExists="true" >
+			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE BODY "DEV"."TT_P8" as
 
    c_scope_prefix constant varchar2(31) := lower($$plsql_unit) || '.';
 
@@ -39,4 +48,7 @@ create or replace package body tt_p8 as
    --~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 end tt_p8;
-/
+/]]></n0:source>
+		</n0:createOraclePackageBody>
+	</changeSet>
+</databaseChangeLog>

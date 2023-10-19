@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="tt_time_entry_comment" author="DEV" failOnError="true" runOnChange="true">
+        <n0:runOracleScript objectName="tt_time_entry_cmment" objectType="SCRIPT" ownerName="DEV" sourceType="STRING">
+            <n0:source>
+                <![CDATA[
+comment on table tt_time_entry is 'Contains individual time entries for the task.';
+
+comment on column tt_time_entry.id is 'Surrogate key.';
+comment on column tt_time_entry.created is 'Date when record was inserted.';
+comment on column tt_time_entry.created_by is 'Who created the record.';
+comment on column tt_time_entry.task_id is 'Reference to task.';
+comment on column tt_time_entry.start_dt is 'Indicates when task has started.';
+comment on column tt_time_entry.end_dt is 'Indicates when task has finished.';
+comment on column tt_time_entry.additional_info is 'Additional information about the entry task.';
+         ]]>
+            </n0:source>
+        </n0:runOracleScript>
+    </changeSet>
+</databaseChangeLog>

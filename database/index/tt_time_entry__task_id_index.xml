@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="24986faf54677852836d9603cad15fa93bf2fd1a" author="(DEV)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
+		<n0:createSxmlObject objectName="TT_TIME_ENTRY__TASK_ID" objectType="INDEX" ownerName="DEV"  replaceIfExists="true" >
+			<n0:source><![CDATA[
+  <INDEX xmlns="http://xmlns.oracle.com/ku" version="1.0">
+   <SCHEMA>DEV</SCHEMA>
+   <NAME>TT_TIME_ENTRY__TASK_ID</NAME>
+   <TABLE_INDEX>
+      <ON_TABLE>
+         <SCHEMA>DEV</SCHEMA>
+         <NAME>TT_TIME_ENTRY</NAME>
+      </ON_TABLE>
+      <COL_LIST>
+         <COL_LIST_ITEM>
+            <NAME>TASK_ID</NAME>
+         </COL_LIST_ITEM>
+      </COL_LIST>
+   </TABLE_INDEX>
+</INDEX>]]></n0:source>
+		</n0:createSxmlObject>
+	</changeSet>
+</databaseChangeLog>

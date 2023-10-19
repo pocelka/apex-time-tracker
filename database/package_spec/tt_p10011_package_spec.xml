@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="c1edf395f5527d034684ada494f75162b907a390" author="(DEV)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
+		<n0:createOraclePackageSpec objectName="TT_P10011" objectType="PACKAGE_SPEC" ownerName="DEV"  replaceIfExists="true" >
+			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE "DEV"."TT_P10011" authid current_user is
+
+   /**
+   Package contains routines for page 10011.
+   **/
+
+   function get_page_help(
+      p_application_id     in apex_application_pages.application_id%type,              -- Application ID for which we are getting help.
+      p_page_id            in apex_application_pages.page_id%type) return clob;        -- Page for which we are getting help.
+   /**
+   Returns page help text if it exists. If application is running in non-English language and translation exists function
+   returns translated text instead.
+   **/
+
+end tt_p10011;
+/]]></n0:source>
+		</n0:createOraclePackageSpec>
+	</changeSet>
+</databaseChangeLog>

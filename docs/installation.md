@@ -1,12 +1,9 @@
 # Installation & Un-Installation
 
-Installation & Un-installation follows standard approach when installing custom components to database using command line native tools SQL*Plus or SQLcl. This installation guide assumes that you are familiar with these tools. Installation is split to the following blocks:
+This page describes how to install and un-install application. This guide assumes that you are familiar with SQLcl. Due to installation process SQL*Plus is not supported. Installation is split to the following blocks:
 
 - User creation (Optional): It is recommended to install time tracker to new schema, however components can be also installed to any existing user.
-- PL/SQL backend
-- APEX front end
-
-> This page describes only clean (new) installation steps.
+- PL/SQL backend and APEX front end installation.
 
 ## Create User
 
@@ -17,36 +14,24 @@ cd database
 sqlcl [connection string] as sysdba @create_user.sql
 ```
 
-## PL/SQL Backend
+## Application Installation
 
-To install components, execute the following script as application owner:
+To install backend and frontend components, navigate to repository root directory and execute the following:
 
 ```bash
-cd database
 sqlcl [connection string]
-@install.sql
+
+lb update -changelog-file ./changelogs/changelog_master.xml -override-app-id [app id] -override-app-schema [schema] -override-app-workspace [workspace] -log
+lb tag -tag "[tag]" -log
+
 exit
 ```
 
-If no errors are produced in ```install.log``` file, back end installation is considered as successfully installed;
-
-## APEX Front End
-
-Ask your DBA to create a new APEX workspace, with option to re-use existing schema; schema created in previous step. At this moment application supports only authentication via application express accounts. Therefore, you will have to create users who will use this application manually as apex application users. Users are created by workspace administrator.
-
-Once APEX workspace exists execute the following script:
-
-```bash
-cd database
-sqlcl [connection string] @install_apex.sql
-exit
-```
-
-If no errors are produced in ```install_apex.log```. application is considered as successfully installed;
+No errors should be produced by Liquibase.
 
 ## Un-Installation
 
-To un-install back end and front end components execute the following script as application owner:
+To completely un-install the application execute the following script as application owner:
 
 ```bash
 cd database
@@ -54,4 +39,4 @@ sqlcl [connection string] @uninstall.sql
 exit
 ```
 
-If no errors are produced in ```uninstall.log```, application is considered as successfully uninstalled;
+If no errors are produced in ```uninstall.log```, application is considered as successfully uninstalled and DBA can drop the user.
