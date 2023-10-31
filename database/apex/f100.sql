@@ -19,7 +19,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_imp.import_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
+,p_release=>'23.1.5'
 ,p_default_workspace_id=>29631720813958193
 ,p_default_application_id=>100
 ,p_default_id_offset=>0
@@ -33,7 +33,7 @@ prompt APPLICATION 100 - Time Tracker
 -- Application Export:
 --   Application:     100
 --   Name:            Time Tracker
---   Date and Time:   20:26 Tuesday September 5, 2023
+--   Date and Time:   18:33 Tuesday October 31, 2023
 --   Exported By:     DEV
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -72,7 +72,7 @@ prompt APPLICATION 100 - Time Tracker
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---   Version:         23.1.2
+--   Version:         23.1.5
 --   Instance ID:     9518025928362380
 --
 
@@ -107,7 +107,7 @@ wwv_imp_workspace.create_flow(
 ,p_logo_text=>'Time Tracker'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'4.0.4'
+,p_flow_version=>'4.0.5'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -119,7 +119,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Time Tracker'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230905200648'
+,p_last_upd_yyyymmddhh24miss=>'20231031183132'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>6
 ,p_print_server_type=>'NATIVE'
@@ -19734,7 +19734,7 @@ wwv_flow_imp_page.create_page(
 'Results from this page can be used as an input for 3rd party tools; i.e. for company related tools.'))
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230905194227'
+,p_last_upd_yyyymmddhh24miss=>'20231031181848'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12212915179921734)
@@ -19888,7 +19888,7 @@ wwv_flow_imp_page.create_page_plug(
 '                           and tl.id = te.task_id',
 '                        where 1 = 1',
 '                        and te.created_by = tt_core.get_session_user',
-'                        and te.created >= current_timestamp - interval ''1'' month',
+'                        and te.created >= add_months(current_timestamp, -1)',
 '                        and tl.reporting = ''Y''',
 '                        group by ',
 '                           to_char(te.start_dt, ''yyyy'') ',
@@ -19942,7 +19942,6 @@ wwv_flow_imp_page.create_worksheet(
  p_id=>wwv_flow_imp.id(12214271951921747)
 ,p_max_row_count=>'1000000'
 ,p_show_search_bar=>'N'
-,p_report_list_mode=>'TABS'
 ,p_lazy_loading=>false
 ,p_show_detail_link=>'N'
 ,p_enable_mail_download=>'Y'

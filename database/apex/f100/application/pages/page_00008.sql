@@ -5,7 +5,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
+,p_release=>'23.1.5'
 ,p_default_workspace_id=>29631720813958193
 ,p_default_application_id=>100
 ,p_default_id_offset=>0
@@ -25,7 +25,7 @@ wwv_flow_imp_page.create_page(
 'Results from this page can be used as an input for 3rd party tools; i.e. for company related tools.'))
 ,p_page_component_map=>'18'
 ,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20230905194227'
+,p_last_upd_yyyymmddhh24miss=>'20231031181848'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(12212915179921734)
@@ -179,7 +179,7 @@ wwv_flow_imp_page.create_page_plug(
 '                           and tl.id = te.task_id',
 '                        where 1 = 1',
 '                        and te.created_by = tt_core.get_session_user',
-'                        and te.created >= current_timestamp - interval ''1'' month',
+'                        and te.created >= add_months(current_timestamp, -1)',
 '                        and tl.reporting = ''Y''',
 '                        group by ',
 '                           to_char(te.start_dt, ''yyyy'') ',
@@ -233,7 +233,6 @@ wwv_flow_imp_page.create_worksheet(
  p_id=>wwv_flow_imp.id(12214271951921747)
 ,p_max_row_count=>'1000000'
 ,p_show_search_bar=>'N'
-,p_report_list_mode=>'TABS'
 ,p_lazy_loading=>false
 ,p_show_detail_link=>'N'
 ,p_enable_mail_download=>'Y'
