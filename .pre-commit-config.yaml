@@ -4,7 +4,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v4.4.0  # master or specific git tag
+  rev: v4.5.0  # master or specific git tag
   hooks:
     - id: trailing-whitespace
     - id: end-of-file-fixer
@@ -14,7 +14,7 @@ repos:
     - id: check-merge-conflict
     # - id: no-commit-to-branch
 - repo: https://github.com/Lucas-C/pre-commit-hooks
-  rev: v1.5.1  # master or specific git tag
+  rev: v1.5.5  # master or specific git tag
   hooks:
   - id: forbid-crlf
 #   - id: forbid-tabs
