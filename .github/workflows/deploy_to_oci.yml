@@ -1,0 +1,42 @@
+# This workflow deploys changes to my OCI Autonomous database; mainly to be aligned with local development.
+
+name: Deploy to OCI.
+
+on:
+  push:
+    branches:
+      - main
+      - feat/6-cicd
+
+jobs:
+  deploy-dev:
+    name: 'Deploy to DEV schema.'
+    runs-on: ubuntu-latest
+
+    # env:
+    #   OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+    #   OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+    #   OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+    #   OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+    #   OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+
+    steps:
+
+    #   - name: Retrieve ATP wallet for connection
+    #     uses: oracle-actions/run-oci-cli-command@v1.1.1
+    #     id: get-db-wallet
+    #     with:
+    #       command: 'iam compartment list --compartment-id-in-subtree=true'
+    #       query: "data[?name=='testing'].id"
+
+      # Checkout the repository to the GitHub Actions runner.
+      - name: Checkout repository.
+        uses: actions/checkout@v4
+
+      - name: list content of current dir
+        run: |
+          echo $(pwd)
+          ls -la
+
+    #   - name: Install SQLcl.
+    #     uses: gvenzl/setup-oracle-sqlcl@v1
