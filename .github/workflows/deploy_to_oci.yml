@@ -13,21 +13,26 @@ jobs:
     name: 'Deploy to DEV schema.'
     runs-on: ubuntu-latest
 
-    # env:
-    #   OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
-    #   OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
-    #   OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
-    #   OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
-    #   OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+    env:
+      OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+      OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+      OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+      OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+      OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
 
     steps:
 
-    #   - name: Retrieve ATP wallet for connection
-    #     uses: oracle-actions/run-oci-cli-command@v1.1.1
-    #     id: get-db-wallet
-    #     with:
-    #       command: 'iam compartment list --compartment-id-in-subtree=true'
-    #       query: "data[?name=='testing'].id"
+      - name: verify env. variables
+        run: echo $OCI_CLI_REGION
+
+      - name: Create directory for OCI DB wallet.
+        run: mkdir -p /home/runner/work/oci_wallet
+
+      - name: Retrieve ATP wallet for connection
+        uses: oracle-actions/run-oci-cli-command@v1.1.1
+        id: get-db-wallet
+        with:
+          command: 'db autonomous-database generate-wallet --autonomous-database-id ${{ secrets.OCI_DB_OCID }} --file /home/runner/work/oci_wallet/wallet.zip --password ${{ secrets.DB_WALLET_PASSWORD}}'
 
       # Checkout the repository to the GitHub Actions runner.
       - name: Checkout repository.
@@ -37,6 +42,7 @@ jobs:
         run: |
           echo $(pwd)
           ls -la
+          ls -la /home/runner/work/oci_wallet
 
     #   - name: Install SQLcl.
     #     uses: gvenzl/setup-oracle-sqlcl@v1
