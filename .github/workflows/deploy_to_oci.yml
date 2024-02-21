@@ -36,7 +36,7 @@ jobs:
       - name: Download DB wallet.
         id: generate-wallet
         run: |
-          db autonomous-database generate-wallet \
+          oci db autonomous-database generate-wallet \
             --autonomous-database-id ${{ secrets.OCI_DB_OCID }} \
             --file /home/runner/work/oci_wallet/wallet.zip \
             --password ${{ secrets.DB_WALLET_PASSWORD }}'
