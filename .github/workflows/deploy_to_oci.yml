@@ -32,7 +32,7 @@ jobs:
         uses: oracle-actions/run-oci-cli-command@v1.1.1
         id: get-db-wallet
         with:
-          command: 'db autonomous-database generate-wallet --autonomous-database-id ${{ secrets.OCI_DB_OCID }} --file /home/runner/work/oci_wallet/wallet.zip --password ${{ secrets.DB_WALLET_PASSWORD}}'
+          command: 'db autonomous-database generate-wallet --autonomous-database-id ${{ secrets.OCI_DB_OCID }} --file /home/runner/work/oci_wallet/wallet.zip --password ${{ secrets.DB_WALLET_PASSWORD }}'
 
       # Checkout the repository to the GitHub Actions runner.
       - name: Checkout repository.
