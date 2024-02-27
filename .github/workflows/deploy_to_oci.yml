@@ -53,7 +53,7 @@ jobs:
             set cloudconfig /home/runner/work/oci_wallet/wallet.zip
             connect ${{ vars.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@${{ secrets.DB_NAME}}
 
-            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 100 -override-app-schema dev -override-app-workspace development -log
+            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 100 -override-app-schema ${{ vars.DB_DEV_USER }} -override-app-workspace development -log
             exit
           EOF
 
