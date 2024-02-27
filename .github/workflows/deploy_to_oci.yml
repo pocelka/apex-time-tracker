@@ -29,7 +29,6 @@ jobs:
       - name: Install OCI CLI.
         id: install-oci-cli
         uses: oracle-actions/run-oci-cli-command@v1.1.1
-
         with:
           command: 'os ns get'
 
@@ -41,24 +40,17 @@ jobs:
             --file /home/runner/work/oci_wallet/wallet.zip \
             --password ${{ secrets.DB_WALLET_PASSWORD }}
 
-      # Checkout the repository to the GitHub Actions runner.
       - name: Checkout repository.
         uses: actions/checkout@v4
-
-    #   - name: list content of current dir
-    #     run: |
-    #       echo $(pwd)
-    #       ls -la
-    #       ls -la /home/runner/work/oci_wallet
 
       - name: Install SQLcl.
         uses: gvenzl/setup-oracle-sqlcl@v1
 
       - name: Deploy changes to DEV schema.
         run: |
-          sql /nolog <<'EOF'
+          sql /nolog <<EOF
             set cloudconfig /home/runner/work/oci_wallet/wallet.zip
-            connect ${{ secrets.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@${{ secrets.DB_NAME}}
+            connect '${{ secrets.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@${{ secrets.DB_NAME}}'
 
             lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 100 -override-app-schema dev -override-app-workspace development -log
             exit
