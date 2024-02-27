@@ -22,4 +22,6 @@
 
     <include file="./../database/apex/apex_install.xml" relativeToChangelogFile="true"/>
 
+    <include file="./../database/reset_sequences.xml" relativeToChangelogFile="true"/>
+
 </databaseChangeLog>

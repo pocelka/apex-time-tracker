@@ -9,11 +9,11 @@
 		<n0:createSxmlObject objectName="TT_TIME_ENTRY__TASK_ID" objectType="INDEX" ownerName="DEV"  replaceIfExists="true" >
 			<n0:source><![CDATA[
   <INDEX xmlns="http://xmlns.oracle.com/ku" version="1.0">
-   <SCHEMA>DEV</SCHEMA>
+   <SCHEMA>%USER_NAME%</SCHEMA>
    <NAME>TT_TIME_ENTRY__TASK_ID</NAME>
    <TABLE_INDEX>
       <ON_TABLE>
-         <SCHEMA>DEV</SCHEMA>
+         <SCHEMA>%USER_NAME%</SCHEMA>
          <NAME>TT_TIME_ENTRY</NAME>
       </ON_TABLE>
       <COL_LIST>

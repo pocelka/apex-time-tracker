@@ -45,8 +45,8 @@ jobs:
 
       - name: Install SQLcl.
         uses: gvenzl/setup-oracle-sqlcl@v1
-        with:
-          version: 23.3.0.270.1251
+        # with:
+        #   version: 23.3.0.270.1251
 
       - name: Deploy changes to DEV schema.
         run: |
