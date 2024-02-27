@@ -58,7 +58,7 @@ jobs:
         run: |
           sql /nolog <<EOF
             set cloudconfig /home/runner/work/oci_wallet/wallet.zip
-            connect ${{ secrets.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@$${{ secrets.DB_NAME}}
+            connect ${{ secrets.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@${{ secrets.DB_NAME}}
 
             select * from dual;
             exit
