@@ -45,11 +45,21 @@ jobs:
       - name: Checkout repository.
         uses: actions/checkout@v4
 
-      - name: list content of current dir
-        run: |
-          echo $(pwd)
-          ls -la
-          ls -la /home/runner/work/oci_wallet
+    #   - name: list content of current dir
+    #     run: |
+    #       echo $(pwd)
+    #       ls -la
+    #       ls -la /home/runner/work/oci_wallet
 
-    #   - name: Install SQLcl.
-    #     uses: gvenzl/setup-oracle-sqlcl@v1
+      - name: Install SQLcl.
+        uses: gvenzl/setup-oracle-sqlcl@v1
+
+      - name: Deploy changes to DEV schema.
+        run: |
+          sql /nolog <<EOF
+            set cloudconfig /home/runner/work/oci_wallet/wallet.zip
+            connect ${{ secrets.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@$${{ secrets.DB_NAME}}
+
+            select * from dual;
+            exit
+          EOF
