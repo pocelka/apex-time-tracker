@@ -50,14 +50,14 @@ jobs:
         run: |
 
           # Workaround: Use intermediate variables to avoid replacement directly within lb command.
-          app_schema='dev'
-          app_workspace='development'
+          app_schema='{{dev}}'
+          app_workspace='{{development}}'
 
           sql /nolog <<EOF
             set cloudconfig /home/runner/work/oci_wallet/wallet.zip
             connect ${{ secrets.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@${{ secrets.DB_NAME}}
 
-            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 100 -override-app-schema $app_schema -override-app-workspace $app_workspace -log
+            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 100 -override-app-schema ${app_schema} -override-app-workspace ${app_workspace} -log
             exit
           EOF
 
