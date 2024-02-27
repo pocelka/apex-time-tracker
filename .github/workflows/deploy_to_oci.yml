@@ -60,6 +60,15 @@ jobs:
             set cloudconfig /home/runner/work/oci_wallet/wallet.zip
             connect ${{ secrets.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@${{ secrets.DB_NAME}}
 
-            select * from dual;
+            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 100 -override-app-schema dev -override-app-workspace development -log
             exit
           EOF
+
+      - name: Store SQLcl Liquibase log for debug purposes.
+        uses: actions/upload-artifact@v4
+        with:
+          name: lb_log_file
+          path: sqlcl-lb*.log
+          retention-days: 1
+          overwrite: true
+          if-no-files-found: error
