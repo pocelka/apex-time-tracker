@@ -7,7 +7,7 @@
 	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 	<changeSet id="bf6ac7cecc25d780c598023c76e99b340045259e" author="(DEV)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
 		<n0:createOraclePackageBody objectName="TT_P7" objectType="PACKAGE_BODY" ownerName="DEV"  replaceIfExists="true" >
-			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE BODY "DEV"."TT_P7" as
+			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE BODY "%USER_NAME%"."TT_P7" as
 
    c_scope_prefix constant varchar2(31) := lower($$plsql_unit) || '.';
 

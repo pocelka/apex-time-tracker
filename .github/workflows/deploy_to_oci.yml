@@ -1,0 +1,79 @@
+# This workflow deploys changes to my OCI Autonomous database; mainly to be aligned with local development.
+
+name: Deploy to OCI.
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-dev:
+    name: 'Deploy to DEV schema.'
+    runs-on: ubuntu-latest
+
+    env:
+      OCI_CLI_USER: ${{ secrets.OCI_CLI_USER }}
+      OCI_CLI_TENANCY: ${{ secrets.OCI_CLI_TENANCY }}
+      OCI_CLI_FINGERPRINT: ${{ secrets.OCI_CLI_FINGERPRINT }}
+      OCI_CLI_KEY_CONTENT: ${{ secrets.OCI_CLI_KEY_CONTENT }}
+      OCI_CLI_REGION: ${{ secrets.OCI_CLI_REGION }}
+
+    steps:
+
+      - name: Create directory for OCI DB wallet.
+        run: mkdir -p /home/runner/work/oci_wallet
+
+      # https://github.com/oracle-actions/run-oci-cli-command/issues/24
+      - name: Install OCI CLI.
+        id: install-oci-cli
+        uses: oracle-actions/run-oci-cli-command@v1.1.1
+        with:
+          command: 'os ns get'
+
+      - name: Download DB wallet.
+        id: generate-wallet
+        run: |
+          oci db autonomous-database generate-wallet \
+            --autonomous-database-id ${{ secrets.OCI_DB_OCID }} \
+            --file /home/runner/work/oci_wallet/wallet.zip \
+            --password ${{ secrets.DB_WALLET_PASSWORD }}
+
+      - name: Checkout repository.
+        uses: actions/checkout@v4
+
+      - name: Install SQLcl.
+        uses: gvenzl/setup-oracle-sqlcl@v1
+        # with:
+        #   version: 23.3.0.270.1251
+
+      - name: Deploy changes to DEV schema.
+        run: |
+
+          sql /nolog <<EOF
+            set cloudconfig /home/runner/work/oci_wallet/wallet.zip
+            connect ${{ vars.DB_DEV_USER }}/${{ secrets.DB_DEV_PASSWORD }}@${{ secrets.DB_NAME}}
+
+            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 100 -override-app-schema DEV -override-app-workspace development -log
+            exit
+          EOF
+
+      - name: Deploy changes to PRD schema.
+        run: |
+
+          sql /nolog <<EOF
+            set cloudconfig /home/runner/work/oci_wallet/wallet.zip
+            connect ${{ vars.DB_PRD_USER }}/${{ secrets.DB_PRD_PASSWORD }}@${{ secrets.DB_NAME}}
+
+            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 109 -override-app-schema PRD -override-app-workspace production -log
+            exit
+          EOF
+
+      - name: Store SQLcl Liquibase logs for debug purposes.
+        uses: actions/upload-artifact@v4
+        with:
+          name: liquibase_log
+          path: sqlcl-lb*.log
+          retention-days: 3
+          overwrite: true
+          if-no-files-found: error

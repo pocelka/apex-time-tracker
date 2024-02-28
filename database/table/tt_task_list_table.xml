@@ -6,10 +6,10 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
 	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 	<changeSet id="6ee48ec7750d971e887e2c01a70f4c11299d338a" author="(DEV)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
-		<n0:createSxmlObject objectName="TT_TASK_LIST" objectType="TABLE" ownerName="DEV"  replaceIfExists="true" >
+		<n0:createSxmlObject objectName="TT_TASK_LIST" objectType="TABLE" ownerName="DEV"  replaceIfExists="false" >
 			<n0:source><![CDATA[
   <TABLE xmlns="http://xmlns.oracle.com/ku" version="1.0">
-   <SCHEMA>DEV</SCHEMA>
+   <SCHEMA>%USER_NAME%</SCHEMA>
    <NAME>TT_TASK_LIST</NAME>
    <RELATIONAL_TABLE>
       <COL_LIST>
@@ -17,7 +17,7 @@
             <NAME>ID</NAME>
             <DATATYPE>NUMBER</DATATYPE>
             <IDENTITY_COLUMN>
-               <SCHEMA>DEV</SCHEMA>
+               <SCHEMA>%USER_NAME%</SCHEMA>
                <GENERATION>DEFAULT</GENERATION>
                <ON_NULL></ON_NULL>
                <START_WITH>81</START_WITH>

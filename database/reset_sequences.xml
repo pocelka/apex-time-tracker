@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet id="tt_reset_sequences" author="DEV" failOnError="true" runOnChange="true" runAlways="true">
+        <n0:runOracleScript objectName="tt_reset_sequences" objectType="SCRIPT" ownerName="DEV" sourceType="STRING">
+            <n0:source>
+                <![CDATA[
+declare
+
+   l_last_value               number;
+   l_sql                      varchar2(4000);
+
+begin
+
+   for i in (select
+                  table_name,
+                  column_name,
+                  sequence_name
+               from user_tab_identity_cols t
+               where 1 = 1
+               and table_name in ('TT_TASK_LIST','TT_TIME_ENTRY'))
+   loop
+
+      --get last value for a column
+      l_sql := 'select max('
+               || i.column_name
+               || ') from '
+               || i.table_name;
+
+      execute immediate l_sql into l_last_value;
+
+      --reset sequence
+      l_sql := 'alter table '
+               || i.table_name
+               || ' modify('
+               || i.column_name
+               || ' generated as identity (start with '
+               || to_char(l_last_value + 1)
+               || '))';
+
+      execute immediate l_sql;
+
+   end loop;
+end;
+         ]]>
+            </n0:source>
+        </n0:runOracleScript>
+    </changeSet>
+</databaseChangeLog>

@@ -7,7 +7,7 @@
 	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 	<changeSet id="05f23476ae8196ecd4591a42f35d52e4462ea053" author="(DEV)-Generated" failOnError="false"   runOnChange="true" runAlways="false"  >
 		<n0:createOraclePackageSpec objectName="TT_P8" objectType="PACKAGE_SPEC" ownerName="DEV"  replaceIfExists="true" >
-			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE "DEV"."TT_P8" authid current_user is
+			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE "%USER_NAME%"."TT_P8" authid current_user is
 
    /**
    Package contains routines for page 8.
