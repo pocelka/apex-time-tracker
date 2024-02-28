@@ -59,11 +59,22 @@ jobs:
             exit
           EOF
 
-      - name: Store SQLcl Liquibase log for debug purposes.
+      - name: Deploy changes to PRD schema.
+        run: |
+
+          sql /nolog <<EOF
+            set cloudconfig /home/runner/work/oci_wallet/wallet.zip
+            connect ${{ vars.DB_PRD_USER }}/${{ secrets.DB_PRD_PASSWORD }}@${{ secrets.DB_NAME}}
+
+            lb update -changelog-file ./changelog/changelog_master.xml -override-app-id 109 -override-app-schema PRD -override-app-workspace production -log
+            exit
+          EOF
+
+      - name: Store SQLcl Liquibase logs for debug purposes.
         uses: actions/upload-artifact@v4
         with:
-          name: lb_log_file
+          name: liquibase_log
           path: sqlcl-lb*.log
-          retention-days: 1
+          retention-days: 3
           overwrite: true
           if-no-files-found: error
