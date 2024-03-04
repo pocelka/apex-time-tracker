@@ -42,19 +42,25 @@ do
   connect ${DB_USER}/${DB_PASSWORD}@${DB_NAME}
 
   --export in split format
-  apex export -applicationid ${app} -dir ${PROJECT_DIR}/database/apex -skipExportDate -expPubReports -expSavedReports -expTranslations -split
+  lb generate-apex-object -applicationid ${app} -dir ${PROJECT_DIR}/database/apex -expsavedreports -exppubreports -exptranslations -dontexporiginalids -split
+
+  --Without this I was getting "No such file or directory"
+  !rm ${PROJECT_DIR}/database/apex/apex_install.xml
 
   --export in full format
-  apex export -applicationid ${app} -dir ${PROJECT_DIR}/database/apex -skipExportDate -expPubReports -expSavedReports -expTranslations
+  lb generate-apex-object -applicationid ${app} -dir ${PROJECT_DIR}/database/apex -expsavedreports -exppubreports -exptranslations -dontexporiginalids
 
   exit;
 EOF
+
+    echo "${PROJECT_DIR}"
 
   VERSION=$(head -n 1 "${PROJECT_DIR}/version")
 
   # In order to support the various versions of sed need to add the "-bak"
   # See: https://unix.stackexchange.com/questions/13711/differences-between-sed-on-mac-osx-and-other-standard-sed/131940#131940
   if [ "${VERSION}" != "" ]; then
+
     sed --in-place=-bak "s/%RELEASE_VERSION%/$VERSION/" "${PROJECT_DIR}/database/apex/f${app}.sql"
     sed --in-place=-bak "s/%RELEASE_VERSION%/$VERSION/" "${PROJECT_DIR}/database/apex/f${app}/application/create_application.sql"
 

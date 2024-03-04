@@ -10,12 +10,12 @@
 
     <include file="./../database/package_spec/tt_core_package_spec.xml" relativeToChangelogFile="true"/>
     <include file="./../database/package_spec/tt_p10011_package_spec.xml" relativeToChangelogFile="true"/>
-    <include file="./../database/package_spec/tt_p7_package_spec.xml" relativeToChangelogFile="true"/>
+    <include file="./../database/package_spec/tt_p1_package_spec.xml" relativeToChangelogFile="true"/>
     <include file="./../database/package_spec/tt_p8_package_spec.xml" relativeToChangelogFile="true"/>
 
     <include file="./../database/package_body/tt_core_package_body.xml" relativeToChangelogFile="true"/>
     <include file="./../database/package_body/tt_p10011_package_body.xml" relativeToChangelogFile="true"/>
-    <include file="./../database/package_body/tt_p7_package_body.xml" relativeToChangelogFile="true"/>
+    <include file="./../database/package_body/tt_p1_package_body.xml" relativeToChangelogFile="true"/>
     <include file="./../database/package_body/tt_p8_package_body.xml" relativeToChangelogFile="true"/>
 
     <include file="./../database/index/tt_time_entry__task_id_index.xml" relativeToChangelogFile="true"/>

@@ -90,8 +90,8 @@
             "id": "bw_entry",
             "type": "pickString",
             "description": "Which Bitwarden entry should be used as connection string?",
-            "options": ["Oracle - DB ATP1 - dev", "Oracle - DB ATP1 - prd"],
-            "default": "Oracle - DB ATP1 - dev"
+            "options": ["Oracle - DB ATP1 - dev", "Oracle - DB ATP1 - prd", "Local Oracle Apex - apps"],
+            "default": "Local Oracle Apex - apps"
         },
         {
             "id": "apex_app_id",
