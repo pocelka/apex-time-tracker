@@ -32,7 +32,7 @@ get_connection_string() {
 
   BW=$(bw get item "${BW_ENTRY}")
 
-  DB_USER=$(echo "${BW}" | jq -r '.login.username')
+  DB_USER=$(echo "${BW}" | jq -r 'if (.fields[] | select(.name == "DB User") | .value) // null then (.fields[] | select(.name == "DB User") | .value) else .login.username end')
   DB_PASSWORD=$(echo "${BW}" | jq -r '.fields[] | select (.name=="DB Pass") | .value')
   DB_NAME=$(echo "${BW}" | jq -r '.fields[] | select (.name=="TNS") | .value')
   APEX_WS=$(echo "${BW}" | jq -r '.fields[] | select (.name=="Workspace") | .value')

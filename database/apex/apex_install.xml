@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-############ lb.parameters ########################################
-applicationid                  : 100
-basecommand                    : liquibase
-command                        : generate-apex-object
-exporiginalids                 : true
-exppubreports                  : true
-expsavedreports                : true
-expsupportingobjects           : Y
-exptranslations                : true
-exptype                        : APPLICATION_SOURCE
-fail-on-error                  : false
-log                            : false
-runalways                      : true
-skipexportdate                 : false
-split                          : true
-sqlclversion                   : 23.3.0.0
-############ End Parameters #######################################
 -->
 <databaseChangeLog
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
@@ -24,19 +7,19 @@ sqlclversion                   : 23.3.0.0
         xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
-<changeSet id="INSTALL_100" author="DEV" runAlways="true" runOnChange="true" >
-    <n0:runApexScript objectName="install" objectType="SCRIPT" ownerName="DEV" sourceType="STRING" >
+<changeSet id="INSTALL_103" author="APPS"     runAlways="true" >
+    <n0:runApexScript objectName="install" objectType="SCRIPT" ownerName="APPS" sourceType="STRING" >
         <n0:source><![CDATA[
 declare
 
-  -- sqlcl version      = 23.3.0.0
+  -- sqlcl version      = 23.4.0.0
   -- override_schema    = ${lb.apex.schema}
   -- override_alias     = ${lb.apex.alias}
   -- override_workspace = ${lb.apex.workspace}
   -- override_app_id    = ${lb.apex.appId}
 
-  l_app_id apex_applications.application_id%type := q'[100]';
-  l_workspace apex_workspaces.workspace%type := q'[DEVELOPMENT]';
+  l_app_id apex_applications.application_id%type := q'[103]';
+  l_workspace apex_workspaces.workspace%type := q'[APPS]';
 
   l_override_workspace apex_workspaces.workspace%type := q'[${lb.apex.workspace}]';
   l_override_schema apex_workspace_schemas.schema%type := q'[${lb.apex.schema}]';
@@ -76,7 +59,7 @@ begin
   end if;
 end;
 /
-@@database/apex/f100/install.sql
+@@database/apex/app/install.sql
         ]]></n0:source>
     </n0:runApexScript>
 </changeSet>

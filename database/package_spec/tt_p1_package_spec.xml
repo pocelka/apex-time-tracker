@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:n0="http://www.oracle.com/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+	http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+	<changeSet id="0b8c8b5d71aa8dcd2a2b87e7e6d1bd7d1d1dec62" author="(APPS)-Generated" failOnError="false"   runOnChange="false" runAlways="false"  >
+		<n0:createOraclePackageSpec objectName="TT_P1" objectType="PACKAGE_SPEC" ownerName="APPS"  replaceIfExists="false" >
+			<n0:source><![CDATA[CREATE OR REPLACE EDITIONABLE PACKAGE "%USER_NAME%"."TT_P1" authid current_user is
+
+   /**
+   Package contains routines for page 1.
+   **/
+
+   procedure create_time_entry(
+      p_task_id             in tt_task_list.id%type               -- Task for which new entry will be created.
+   );
+   /**
+   Procedure is used to handle time entries. It ends previous entry and adds new row with new entry.
+   **/
+
+end tt_p1;
+/]]></n0:source>
+		</n0:createOraclePackageSpec>
+	</changeSet>
+</databaseChangeLog>
