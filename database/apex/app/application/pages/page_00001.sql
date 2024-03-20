@@ -40,7 +40,7 @@ wwv_flow_imp_page.create_page(
 '</p>'))
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20240221200539'
+,p_last_upd_yyyymmddhh24miss=>'20240320192801'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(65250316835133922)
@@ -107,12 +107,12 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>20
 ,p_button_name=>'BUTTON_NEW_TASK'
 ,p_button_action=>'REDIRECT_PAGE'
-,p_button_template_options=>'#DEFAULT#:t-Button--large:t-Button--iconLeft:t-Button--stretch'
-,p_button_template_id=>wwv_flow_imp.id(66158270121352007)
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(66157436874352003)
 ,p_button_is_hot=>'Y'
-,p_button_image_alt=>'Create New Task'
+,p_button_image_alt=>'New Task'
 ,p_button_redirect_url=>'f?p=&APP_ID.:3:&SESSION.::&DEBUG.:RR,3::'
-,p_button_css_classes=>'u-success'
+,p_button_css_classes=>'u-success float my-float'
 ,p_icon_css_classes=>'fa-plus'
 ,p_grid_new_row=>'Y'
 ,p_grid_column_span=>12

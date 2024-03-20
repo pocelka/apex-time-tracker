@@ -52,7 +52,7 @@ wwv_flow_imp_shared.create_theme(
 ,p_default_required_label=>wwv_flow_imp.id(66156974015352001)
 ,p_default_navbar_list_template=>wwv_flow_imp.id(66145584093351988)
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_theme_file_prefix(42),'#APEX_FILES#themes/theme_42/23.1/')
-,p_files_version=>66
+,p_files_version=>67
 ,p_icon_library=>'FONTAPEX'
 ,p_javascript_file_urls=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '#APEX_FILES#libraries/apex/#MIN_DIRECTORY#widget.stickyWidget#MIN#.js?v=#APEX_VERSION#',
