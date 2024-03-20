@@ -40,7 +40,7 @@ wwv_flow_imp_page.create_page(
 '</p>'))
 ,p_page_component_map=>'13'
 ,p_last_updated_by=>'ADMIN'
-,p_last_upd_yyyymmddhh24miss=>'20240320192801'
+,p_last_upd_yyyymmddhh24miss=>'20240320214210'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(65250316835133922)
@@ -180,7 +180,12 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Display processed message'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>'apex.message.showPageSuccess("Time entered!");'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'apex.message.showPageSuccess("Time entered!");',
+'',
+'setTimeout(function(){',
+'    apex.message.hidePageSuccess();',
+'}, 2000); // 2000 milliseconds = 2 seconds'))
 );
 wwv_flow_imp.component_end;
 end;
